@@ -1,0 +1,158 @@
+
+main {
+    position: relative;
+    width: 602px;
+    margin: auto;
+    background: #EEE7DE;
+    border: 1px solid #000000;
+}
+
+main .tabs  {
+    position: absolute;
+    right: 0%;
+    top: 0;
+    display: flex;
+    background-color: black;
+    width: 10rem;
+    justify-content: space-around;
+    padding: 0.5rem 1rem;
+    z-index: 2;
+}
+
+main .tabs .separator {
+    border-left: 1px solid white;
+}
+
+main .tab button {
+    background-color: transparent;
+    color: rgb(179, 179, 179);
+    border: none;
+}
+
+main .tab.active button {
+    color: white;
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+main .tab:hover button {
+    cursor: pointer;
+    color: white;
+    transition: 0.5s;
+
+}
+
+
+main .image label {
+    padding: 0.5rem 1rem;
+    background: #796B6B;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    color: white;
+}
+
+main .image label:hover {
+    cursor: pointer;
+    background-color: #5e5656;
+    transition: 0.5s;
+}
+
+main .image {
+    position: relative;
+    display: block;
+    height: 20rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+main .title input {
+    width: 100%;
+    height: 80px;
+    top: 322px;
+    background: rgba(121, 107, 107, 0.19);
+    border: none;
+    outline: none;
+    padding-left: 2rem;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+    border: none;
+    padding: 2rem;
+
+}
+
+/*-----------------------
+        Preview 
+        ----------------*/
+
+main #preview .title {
+    display: flex;
+    align-items: center;
+}
+main .title h1 {
+    width: 100%;
+    padding: 0.5rem 2rem;
+    top: 322px;
+    background: rgba(121, 107, 107, 0.19);
+    border: none;
+    outline: none;
+    padding-left: 2rem;
+}
+
+main #preview .content {
+    padding: 2rem;
+}
+
+
+/*-------------------
+        displays
+        ------------*/
+
+        
+main #edit,
+main #preview {
+    display: none;
+}
+
+main #edit.focus,
+main #preview.focus {
+    display: block;
+}
+        
+
+
+/*-----------------
+        actions
+        ------------*/
+.actions {
+    display: flex;
+    width: 602px;
+    margin: auto;
+    margin-top: 1rem;
+    gap: 2rem;
+}
+
+.actions button {
+    background: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+}
+
+.actions button:nth-of-type(2) {
+    background: #796B6B;
+
+}
+
+.actions button:hover {
+    cursor: pointer;
+    background: rgb(54, 54, 54);
+    color: white;
+    transition: 0.5s;
+}
+

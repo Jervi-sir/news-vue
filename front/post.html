@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="post.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="">
+                <img src="https://fakeimg.pl/200x100/">
+            </a>
+        </div>
+        <div class="menu">
+            <div class="item active">
+                Articles
+            </div>
+            <div class="item">
+                Videos
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="tabs">
+            <div id="edit-btn" class="tab active">
+                <button onclick="edit()">
+                    Edit
+                </button>
+            </div>
+            <div class="separator"></div>
+            <div id="preview-btn" class="tab">
+                <button onclick="preview()">
+                    Preview
+                </button>
+            </div>
+        </div>
+        <form id="edit" class="focus" action="#">
+            <div class="image" id="image-preview">
+                <label for="image">Selec cover</label>
+                <input type="file" id="image" name="myfile" onchange="readURL(this);"  hidden required>
+            </div>
+            <div class="title">
+                <input type="text" id="title"  placeholder="Title" required>
+            </div>
+            <div class="content">
+                <textarea name="" id=""   placeholder="article" required></textarea>
+            </div>
+            <button type="submit" hidden>submit</button>
+        </form>
+
+        <div id="preview" >
+            <div class="image">
+
+            </div>
+            <div class="title">
+                <h1>Title</h1>
+            </div>
+            <div class="content">
+                Content
+            </div>
+        </div>
+    </main>
+    <div class="actions">
+        <button onclick="submit()">Submit</button>
+        <button onclick="draft()">Draft</button>
+    </div>
+
+    <script>
+        $('textarea').on('input', function () { 
+            this.style.height = 'auto'; 
+
+            this.style.height = (this.scrollHeight) + 'px'; 
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#image-preview').css("background-image", 'url('+  e.target.result + ')' );
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function edit() {
+            $('#edit-btn').addClass('active');
+            $('#preview-btn').removeClass('active');
+            $('#edit').addClass('focus');
+            $('#preview').removeClass('focus');
+
+        }
+
+        function preview() {
+            $('#edit-btn').removeClass('active');
+            $('#preview-btn').addClass('active');
+            $('#edit').removeClass('focus');
+            $('#preview').addClass('focus');
+
+            image = $('#image-preview').css("background-image");
+            image = image.replace('url(','').replace(')','').replace(/\"/gi, "");
+
+            title = $('#edit').find('#title').val();
+            content = $('#edit').find('textarea').val();
+
+            $('#preview').find('.image').css("background-image", 'url('+  image + ')' );
+            $('#preview').find('.title h1').text(title);
+            $('#preview').find('.content').text(content);
+        }
+
+        function submit() {
+            $('#edit').find('button').click();
+        }
+
+        function draft() {
+            
+        }
+
+
+    </script>
+</body>
+</html>

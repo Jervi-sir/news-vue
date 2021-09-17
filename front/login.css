@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal&display=swap');
+.arabic {
+    font-family: 'Tajawal', sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+    padding:0;
+    margin: 0;
+}
+
+body {
+    background-color: #F8F2EB;
+    padding: 0 10%;
+    font-family: 'Tajawal', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+header .menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .logo {
+    width: 20%;
+}
+
+header .menu {
+    width: 10%;
+}
+
+main {
+    position: relative;
+    width: 602px;
+    margin: auto;
+    background: #EEE7DE;
+    border: 1px solid #000000;
+    padding: 2rem 4rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form .row {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+
+h1{
+    font-size: 30px;
+    text-align: center;
+    color: #000000;
+}
+
+
+
+form label {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+form input {
+    height: 50px;
+    border: none;
+    background: rgba(121, 107, 107, 0.19);
+    padding-left: 1rem;
+    font-size: 15px;
+}
+
+form a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #000000;
+}
+
+
+form button {
+    height: 32px;
+    border: none;
+    background: #796B6B;
+    margin-top: 2rem;
+    color: white;
+    font-size: 15px;
+}
+
+form button:hover {
+    cursor: pointer;
+}

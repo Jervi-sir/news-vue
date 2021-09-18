@@ -15,29 +15,32 @@
                 </button>
             </div>
         </div>
-        <form id="edit" class="focus" action="#">
+        <form id="edit" class="focus" action="#" @submit.prevent="processForm">
             <div class="image" id="image-preview">
                 <label for="image">Selec cover</label>
-                <input type="file" id="image" name="myfile" hidden required>
+                <input type="file" id="image" name="myfile" @change="onFileChange" hidden required>
             </div>
             <div class="title">
-                <input type="text" id="title"  placeholder="Title" required>
+                <input type="text" id="title" v-model="title"  placeholder="Title" required>
             </div>
             <div class="content">
-                <textarea name="" id=""   placeholder="article" required></textarea>
+                <textarea name="" id="" v-model="content"   placeholder="article" required></textarea>
             </div>
             <button type="submit" hidden>submit</button>
         </form>
-
+        
+        
         <div id="preview" >
             <div class="image">
 
             </div>
             <div class="title">
-                <h1>Title</h1>
+                <h1>{{title}}</h1>
             </div>
             <div class="content">
-                Content
+                <p>
+                {{content}}
+                </p>
             </div>
         </div>
     </main>
@@ -53,6 +56,13 @@
 // @ is an alias to /src
 
 export default {
+  data () {
+    return {
+        image: '',
+        title: '',
+        content: ''
+    }
+  },
   methods: {
     edit () { 
         document.querySelector('#edit-btn').classList.add('active');
@@ -75,6 +85,17 @@ export default {
         $('#preview').find('.content').text(content);
         */
     },
+
+    onFileChange(e) {
+        
+        const file = e.target.files[0];
+        document.getElementById('image-preview').style.backgroundImage = 'url(' +URL.createObjectURL(file)+ ')';
+        var previewImg = document.getElementById('preview').getElementsByClassName('image')[0];
+        previewImg.style.backgroundImage = 'url(' +URL.createObjectURL(file)+ ')';
+
+        this.url = URL.createObjectURL(file);
+    },
+
 
   },
   name: 'Post',
@@ -191,6 +212,11 @@ main .title h1 {
 
 main #preview .content {
     padding: 2rem;
+    white-space: pre-wrap;      /* Webkit */    
+    white-space: -moz-pre-wrap; /* Firefox */     
+    white-space: -pre-wrap;     /* Opera <7 */    
+    white-space: -o-pre-wrap;   /* Opera 7 */     
+    word-wrap: break-word;      /* IE */ 
 }
 
 
